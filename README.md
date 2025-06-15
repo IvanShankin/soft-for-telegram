@@ -3,7 +3,7 @@
 # Общая информация
 ### Название проект: Black SMM
 ### Задачи: работа с аккаунтами и API telegram
-### Задускать через app/start.py или app/start.exe
+### Запускать через app/start.py или app/start.exe
 
 ## Содержание 
 
