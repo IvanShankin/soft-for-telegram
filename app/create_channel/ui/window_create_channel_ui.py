@@ -26,7 +26,11 @@ class TextEditDescription(QTextEdit):
         border-radius: 20px;
         padding-top: 15px; /* Отступ только слева */   
         padding-bottom: 15px; /* Отступ только снизу */
+<<<<<<< HEAD
         """)  # изменения стиля
+=======
+        """)  # Пример изменения стиля
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
 
     def focusOutEvent(self, event):
         super().focusOutEvent(event)
@@ -50,7 +54,11 @@ class TextEditChannelName(QTextEdit):
             border-radius: 20px;
             padding-top: 15px; /* Отступ только слева */   
             padding-bottom: 15px; /* Отступ только снизу */
+<<<<<<< HEAD
             """)  # изменения стиля
+=======
+            """)  # Пример изменения стиля
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
 
     def focusOutEvent(self, event):
         super().focusOutEvent(event)
@@ -362,6 +370,7 @@ class WindowCreateChannelUi(QtWidgets.QMainWindow):
                                                      "                background-color:rgb(3, 11, 22); /* Цвет фона при нажатии */\n"
                                                      "            }")
         self.pushButton_create_channel.setObjectName("pushButton_create_channel")
+<<<<<<< HEAD
         self.verticalLayout.addWidget(self.pushButton_create_channel)
 
         self.pushButton_create_bot = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
@@ -389,6 +398,11 @@ class WindowCreateChannelUi(QtWidgets.QMainWindow):
         self.pushButton_create_bot.setObjectName("pushButton_create_bot")
         self.verticalLayout.addWidget(self.pushButton_create_bot)
 
+=======
+        self.pushButton_create_channel.setText('   Массовое создание каналов')
+        self.verticalLayout.addWidget(self.pushButton_create_channel)
+
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_enter_group = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -871,11 +885,14 @@ class WindowCreateChannelUi(QtWidgets.QMainWindow):
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
         self.label_5.setText("")
         self.label_5.setObjectName("label_5")
+<<<<<<< HEAD
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_5.sizePolicy().hasHeightForWidth())
         self.label_5.setSizePolicy(sizePolicy)
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.gridLayout_7.addWidget(self.label_5, 2, 3, 1, 1)
         self.gridLayout_11 = QtWidgets.QGridLayout()
         self.gridLayout_11.setContentsMargins(-1, 27, -1, 10)
@@ -957,15 +974,26 @@ class WindowCreateChannelUi(QtWidgets.QMainWindow):
                                                           "}")
         self.checkBox_mailing_first_message.setObjectName("checkBox_mailing_first_message")
         self.gridLayout.addWidget(self.checkBox_mailing_first_message, 1, 0, 1, 1)
+<<<<<<< HEAD
         self.pushButton_choose_first_message = QtWidgets.QPushButton(self.groupBox_2)
         self.pushButton_choose_first_message.setMinimumSize(QtCore.QSize(0, 31))
         self.pushButton_choose_first_message.setMaximumSize(QtCore.QSize(70, 35))
+=======
+        self.pushButton_choose_file_for_mailing = QtWidgets.QPushButton(self.groupBox_2)
+        self.pushButton_choose_file_for_mailing.setMinimumSize(QtCore.QSize(0, 31))
+        self.pushButton_choose_file_for_mailing.setMaximumSize(QtCore.QSize(70, 35))
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
+<<<<<<< HEAD
         self.pushButton_choose_first_message.setFont(font)
         self.pushButton_choose_first_message.setStyleSheet("QPushButton {\n"
+=======
+        self.pushButton_choose_file_for_mailing.setFont(font)
+        self.pushButton_choose_file_for_mailing.setStyleSheet("QPushButton {\n"
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                                                               "  background: rgb(210, 210, 213);\n"
                                                               "text-align: center;\n"
                                                               "border-radius: 10px;\n"
@@ -977,8 +1005,13 @@ class WindowCreateChannelUi(QtWidgets.QMainWindow):
                                                               "QPushButton:pressed {\n"
                                                               "                   background-color: rgb(150, 150, 153); /* Цвет фона при нажатии */\n"
                                                               "            }")
+<<<<<<< HEAD
         self.pushButton_choose_first_message.setObjectName("pushButton_choose_first_message")
         self.gridLayout.addWidget(self.pushButton_choose_first_message, 1, 1, 1, 1)
+=======
+        self.pushButton_choose_file_for_mailing.setObjectName("pushButton_choose_file_for_mailing")
+        self.gridLayout.addWidget(self.pushButton_choose_file_for_mailing, 1, 1, 1, 1)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.checkBox_use_proxy = QtWidgets.QCheckBox(self.groupBox_2)
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -1517,9 +1550,12 @@ class WindowCreateChannelUi(QtWidgets.QMainWindow):
                                                        "    background-color: rgb(255, 255, 255);\n"
                                                        "    text-align: center;\n"
                                                        "    border-radius: 17px;\n"
+<<<<<<< HEAD
                                                        "	 padding: 10px;"
                                                         "    padding-left: 20px;"
                                                         "    padding-right: 20px;"
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                                                        "   }\n"
                                                        "QPushButton:hover {\n"
                                                        "    background-color: rgb(230, 230, 230); /* Цвет фона при наведении (немного серый) */\n"
@@ -1528,6 +1564,10 @@ class WindowCreateChannelUi(QtWidgets.QMainWindow):
                                                        "QPushButton:pressed {\n"
                                                        "     background: rgb(210, 210, 213); /* Цвет фона при нажатии (еще серее) */\n"
                                                        "}")
+<<<<<<< HEAD
+=======
+        self.pushButton_clear_conclusion.setIconSize(QtCore.QSize(60, 60))
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_clear_conclusion.setObjectName("pushButton_clear_conclusion")
         self.gridLayout_8.addWidget(self.pushButton_clear_conclusion, 1, 1, 1, 1)
         self.pushButton_start = QtWidgets.QPushButton(self.centralwidget)
@@ -1570,14 +1610,21 @@ class WindowCreateChannelUi(QtWidgets.QMainWindow):
         _translate = QtCore.QCoreApplication.translate
         self.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.pushButton_account.setText(_translate("MainWindow", "   Аккаунты"))
+<<<<<<< HEAD
         self.pushButton_mailing.setText(_translate("MainWindow", "   Рассылка по юзерам"))
+=======
+        self.pushButton_mailing.setText(_translate("MainWindow", "   Рассылка"))
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_mailing_chat.setText(_translate("MainWindow", "   Рассылка по чатам"))
         self.pushButton_invite.setText(_translate("MainWindow", "   Инвайт"))
         self.pushButton_parser.setText(_translate("MainWindow", "   Парсер"))
         self.pushButton_proxy.setText(_translate("MainWindow", "   Прокси"))
         self.pushButton_bomber.setText(_translate("MainWindow", "   Бомбер на аккаунт"))
         self.pushButton_create_channel.setText(_translate("MainWindow", "   Массовое создание каналов"))
+<<<<<<< HEAD
         self.pushButton_create_bot.setText(_translate("MainWindow", "   Массовое создание ботов"))
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_enter_group.setText(_translate("MainWindow", "   Массовый заход в группу"))
         self.pushButton_reactions.setText(_translate("MainWindow", "   Накрутка реакций"))
         self.pushButton_comment.setText(_translate("MainWindow", "   Накрутка комментариев"))
@@ -1591,7 +1638,11 @@ class WindowCreateChannelUi(QtWidgets.QMainWindow):
         self.textEdit_description_list.setHtml(_translate("MainWindow", ""))
         self.checkBox_set_description.setText(_translate("MainWindow", "Установить описание"))
         self.checkBox_mailing_first_message.setText(_translate("MainWindow", "Отправить первое сообщение"))
+<<<<<<< HEAD
         self.pushButton_choose_first_message.setText(_translate("MainWindow", "Выбрать"))
+=======
+        self.pushButton_choose_file_for_mailing.setText(_translate("MainWindow", "Выбрать"))
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.checkBox_use_proxy.setText(_translate("MainWindow", "Использовать прокси"))
         self.pushButton_random_choice_photo.setText(_translate("MainWindow", "Открыть"))
         self.checkBox_random_choice_photo.setText(_translate("MainWindow", "Установить случайное фото"))

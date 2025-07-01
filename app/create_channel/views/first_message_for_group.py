@@ -20,6 +20,32 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QLabel,QFileDialog, QCheckBox
 from PyQt5.QtCore import Qt, pyqtSignal
 
+<<<<<<< HEAD
+=======
+
+class DraggableLabel(QLabel):  # спец класс для Label
+    def __init__(self, text, parent=None):
+        super().__init__(text, parent)
+        self.oldPos = None  # Переменная для хранения позиции мыши
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.LeftButton:  # Проверка на левую кнопку мыши
+            self.oldPos = event.globalPos() - self.parent().frameGeometry().topLeft()  # Запоминаем позицию мыши
+            event.accept()  # Принять событие
+
+    def mouseMoveEvent(self, event):
+        if self.oldPos is not None and event.buttons() == Qt.LeftButton:  # Проверка, что кнопка мыши удерживается
+            self.parent().move(event.globalPos() - self.oldPos)  # Перемещения окна
+            event.accept()  # Принять событие
+
+    def mouseReleaseEvent(self, event):
+        if event.button() == Qt.LeftButton:  # Проверка на отпускание кнопки мыши
+            self.oldPos = None  # Обнуляем позицию
+            event.accept()  # Принять событие
+
+
+
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
 class DialogFirstMessage(DialogFirstMessageUi):
     """
     принимает и возвращает dict: \n

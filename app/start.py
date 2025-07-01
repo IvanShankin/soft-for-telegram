@@ -5,14 +5,20 @@ import psutil
 
 from app.accounts.views.accounts import WindowAccounts
 from app.mailing_by_users.views.mailing_by_users import WindowMailingByUsers
+<<<<<<< HEAD
 from app.mailing_by_chats.views.mailing_by_chats import WindowMailingByChats
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
 from app.general.views.info import DialogInfo
 from app.proxy.views.proxy import WindowProxy
 from app.parser.views.parser import WindowParser
 from app.convert.views.convert import WindowConvert
 from app.invite.views.invite import WindowInvite
 from app.create_channel.views.create_channel import WindowCreateChannel
+<<<<<<< HEAD
 from app.create_bot.views.create_bot import WindowCreateBot
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
 
 from pathlib import Path
 import PyQt5
@@ -39,24 +45,36 @@ class MainWindow(QWidget):
         self.accounts_window = WindowAccounts(self.switch_window)
         self.accounts_window.start_show_account('active')
         self.mailing_by_users_window = WindowMailingByUsers(self.switch_window)
+<<<<<<< HEAD
         self.mailing_by_chats_window = WindowMailingByChats(self.switch_window)
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.proxy_window = WindowProxy(self.switch_window)
         self.parser = WindowParser(self.switch_window)
         self.convert = WindowConvert(self.switch_window)
         self.invite = WindowInvite(self.switch_window)
         self.create_channel = WindowCreateChannel(self.switch_window)
+<<<<<<< HEAD
         self.create_bot = WindowCreateBot(self.switch_window)
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
 
         # Добавляем окна в QStackedWidget
         self.stacked_widget.addWidget(self.accounts_window)
         self.stacked_widget.addWidget(self.mailing_by_users_window)
+<<<<<<< HEAD
         self.stacked_widget.addWidget(self.mailing_by_chats_window)
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.stacked_widget.addWidget(self.proxy_window)
         self.stacked_widget.addWidget(self.parser)
         self.stacked_widget.addWidget(self.convert)
         self.stacked_widget.addWidget(self.invite)
         self.stacked_widget.addWidget(self.create_channel)
+<<<<<<< HEAD
         self.stacked_widget.addWidget(self.create_bot)
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
 
 
         layout = QVBoxLayout(self)
@@ -73,16 +91,22 @@ class MainWindow(QWidget):
             self.stacked_widget.setCurrentWidget(self.accounts_window)  # Переключаемся на окно аккаунты
         elif target_window == 'mailing_by_users':
             self.stacked_widget.setCurrentWidget(self.mailing_by_users_window)
+<<<<<<< HEAD
         elif target_window == 'mailing_by_chats':
             self.stacked_widget.setCurrentWidget(self.mailing_by_chats_window)
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         elif target_window == 'proxy':
             self.stacked_widget.setCurrentWidget(self.proxy_window)
         elif target_window == 'bomber':
             pass
         elif target_window == 'create_channel':
             self.stacked_widget.setCurrentWidget(self.create_channel)
+<<<<<<< HEAD
         elif target_window == 'create_bot':
             self.stacked_widget.setCurrentWidget(self.create_bot)
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         elif target_window == 'comment':
             pass
         elif target_window == 'convert':

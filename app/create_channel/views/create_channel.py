@@ -60,7 +60,11 @@ class CreatingChannelWithStreams(QThread): # затухание progress_bar
             :param password: данные прокси
             """
     task_done = pyqtSignal(str, list, bool, list, list, str, list, bool)  # Сигнал, который мы будем использовать для обновления интерфейса
+<<<<<<< HEAD
     # вывод в консоль(str), количество успешных[0] и неудачных созданий[1](list), ошибка прокси(bool), ошибка(str), конец работы(bool)
+=======
+    # вывод в консоль(str), количество успешных и неудачных сообщений(list), ошибка прокси(bool), ошибка(str), конец работы(bool)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
 
     def __init__(self,id_account: int, channel_name: list, delay: int, max_channel_from_one_account: int,
                  avatar_path: list,
@@ -88,6 +92,7 @@ class CreatingChannelWithStreams(QThread): # затухание progress_bar
 
         self.client = None
         self.me = None
+<<<<<<< HEAD
         self.successful_create = 0
         self.failed_create = 0
         self.account_id = 0
@@ -95,6 +100,13 @@ class CreatingChannelWithStreams(QThread): # затухание progress_bar
         self.user_name_created_channel = [] # список user_name созданных каналов
 
         self.stop_thread = False
+=======
+        self.successful_create_channel = 0
+        self.failed_create_channel = 0
+        self.account_id = 0
+        self.last_used = ''
+        self.user_name_created_channel = [] # список имён созданных каналов
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
 
     def run(self):
         asyncio.run(self.run_2())
@@ -110,7 +122,11 @@ class CreatingChannelWithStreams(QThread): # затухание progress_bar
 
             self.client = await tdesk.ToTelethon(session=f"{folder_path_account}/session.session", flag=UseCurrentSession, )
 
+<<<<<<< HEAD
             await asyncio.wait_for(self.client.connect(), timeout=15)  # вход в аккаунт
+=======
+            await asyncio.wait_for(self.client.connect(), timeout=7)  # вход в аккаунт
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
             self.me = await self.client.get_me()
             self.account_id = self.me.id
 
@@ -132,7 +148,11 @@ class CreatingChannelWithStreams(QThread): # затухание progress_bar
                     megagroup=False,  # False - для канала, True - для супергруппы
                 ))
 
+<<<<<<< HEAD
                 channel_id = result.chats[0].id
+=======
+                channel_id =  result.chats[0].id
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
 
                 error_change_user_name = False
                 if self.user_name:
@@ -148,8 +168,13 @@ class CreatingChannelWithStreams(QThread): # затухание progress_bar
                             self.task_done.emit(
                                 f'Аккаунт "{self.me.username}" являетесь администратором слишком большого '
                                 f'количества общедоступных каналов (максимум 10). Сделайте некоторые каналы закрытыми.\n'
+<<<<<<< HEAD
                                 f'Созданных каналов: {self.successful_create} из {self.max_channel_from_one_account}',
                                 [self.successful_create, self.failed_create], False, [self.account_id, self.last_used],
+=======
+                                f'Созданных каналов: {self.successful_create_channel} из {self.max_channel_from_one_account}',
+                                [self.successful_create_channel, self.failed_create_channel], False, [self.account_id, self.last_used],
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                                 self.user_name_created_channel,'', [],
                                 True)
                             try:
@@ -159,7 +184,11 @@ class CreatingChannelWithStreams(QThread): # затухание progress_bar
                             return
                         # exception 1.если некорректный user_name 2.если такой user_name уже установлен у этого канала
                         except (errors.UsernameInvalidError, errors.UsernameNotModifiedError):
+<<<<<<< HEAD
                             self.failed_create += 1
+=======
+                            self.failed_create_channel += 1
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                             error_change_user_name = True
                             break
                         except (errors.UsernameOccupiedError, errors.UsernamePurchaseAvailableError):  # если user_name занят
@@ -167,7 +196,11 @@ class CreatingChannelWithStreams(QThread): # затухание progress_bar
                                 random_digits = ''.join([str(random.randint(0, 9)) for _ in range(4)])
                                 user_name_channel = self.user_name[counter] + random_digits
                             else:
+<<<<<<< HEAD
                                 self.failed_create += 1
+=======
+                                self.failed_create_channel += 1
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                                 error_change_user_name = True
                                 break
 
@@ -178,7 +211,11 @@ class CreatingChannelWithStreams(QThread): # затухание progress_bar
                     try:
                         uploaded_file = await  self.client.upload_file(random.choice(self.avatar_path)) # Загружаем фото
                     except FileNotFoundError:
+<<<<<<< HEAD
                         self.task_done.emit(f'', [self.successful_create, self.failed_create], False,
+=======
+                        self.task_done.emit(f'', [self.successful_create_channel, self.failed_create_channel], False,
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                                             [self.account_id, self.last_used], self.user_name_created_channel,
                                             'Ошибка установления аватара!\nНе удалось установить фото в аватар канала!\n'
                                             'Проверьте папку с фото для случайного выбора!', [], True)
@@ -201,7 +238,11 @@ class CreatingChannelWithStreams(QThread): # затухание progress_bar
                             photo=input_photo
                         ))
                     except errors.PhotoInvalidError: # если фотография недействительна
+<<<<<<< HEAD
                         self.failed_create += 1
+=======
+                        self.failed_create_channel += 1
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                         continue
 
                 error_sent_message = False
@@ -215,15 +256,22 @@ class CreatingChannelWithStreams(QThread): # затухание progress_bar
                                     entity=channel_id,
                                     file=self.send_first_message['file_path'],
                                     caption= self.send_first_message['message'],
+<<<<<<< HEAD
                                     parse_mode='html',
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                                     force_document = False # Важно! False - отправка как фото
                                 )
                             else:
                                 await self.client.send_file(
                                     entity=channel_id,
                                     file=self.send_first_message['file_path'],
+<<<<<<< HEAD
                                     caption=self.send_first_message['message'],
                                     parse_mode='html'
+=======
+                                    caption=self.send_first_message['message']
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                                 )
                         else:
                             await self.client.send_message(
@@ -232,24 +280,40 @@ class CreatingChannelWithStreams(QThread): # затухание progress_bar
                                 parse_mode='html'
                             )
                     except FileNotFoundError:
+<<<<<<< HEAD
                         self.task_done.emit(f'',[self.successful_create, self.failed_create], False,
+=======
+                        self.task_done.emit(f'',[self.successful_create_channel, self.failed_create_channel], False,
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                                             [self.account_id, self.last_used], self.user_name_created_channel,
                                             'Ошибка отсылки файла!\nДобавьте новый файл', [],True)
                         error_sent_message = True
                     except errors.MessageEmptyError:
+<<<<<<< HEAD
                         self.task_done.emit(f'', [self.successful_create, self.failed_create], False,
+=======
+                        self.task_done.emit(f'', [self.successful_create_channel, self.failed_create_channel], False,
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                                             [self.account_id, self.last_used], self.user_name_created_channel,
                                             'Ошибка отправки сообщения!\nСообщение в недопустимом формате UTF-8', [], True)
                         error_sent_message = True
                     except errors.MessageTooLongError:
+<<<<<<< HEAD
                         self.task_done.emit(f'', [self.successful_create, self.failed_create], False,
+=======
+                        self.task_done.emit(f'', [self.successful_create_channel, self.failed_create_channel], False,
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                                             [self.account_id, self.last_used], self.user_name_created_channel,
                                             'Ошибка отправки сообщения!\nСообщение слишком длинное.'
                                              '\nМаксимальная длинная сообщения без файла = 4024 символов в UTF-8\n'
                                              'С файлом 1024 символов в UTF-8', [],True)
                         error_sent_message = True
                     except (errors.ImageProcessFailedError, errors.PhotoInvalidError, errors.MediaInvalidError):
+<<<<<<< HEAD
                         self.task_done.emit(f'', [self.successful_create, self.failed_create], False,
+=======
+                        self.task_done.emit(f'', [self.successful_create_channel, self.failed_create_channel], False,
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                                             [self.account_id, self.last_used], self.user_name_created_channel,
                                             'Ошибка отправки сообщения!\nФайл прикреплённый к сообщению невозможно отправить!\n'
                                             'Поменяйте его!',
@@ -259,23 +323,41 @@ class CreatingChannelWithStreams(QThread): # затухание progress_bar
 
                 if self.send_first_message['use_the_forwarded_message']:
                     try:
+<<<<<<< HEAD
                         await self.client.forward_messages(
                             entity=channel_id, # куда необходимо отослать
                             messages=int(self.send_first_message['message_ID']),
                             from_peer=self.send_first_message['user_name_channel']
+=======
+                        # target_entity = await client.get_entity(self.send_first_message['user_name_channel'])
+                        await self.client.forward_messages(
+                            entity=channel_id, # куда необходимо отослать
+                            messages=int(self.send_first_message['message_ID']),
+                            from_peer=self.send_first_message['user_name_channel'] # заменить везде на такое значение (здесь необходимо писать user_name)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                         )
                     except (errors.BroadcastPublicVotersForbiddenError, errors.ChannelPrivateError,
                             errors.ChatAdminRequiredError, errors.MediaEmptyError, errors.QuizAnswerMissingError,
                             errors.TopicDeletedError):
                         self.task_done.emit(f'',
+<<<<<<< HEAD
                                             [self.successful_create, self.failed_create], False,
+=======
+                                            [self.successful_create_channel, self.failed_create_channel], False,
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                                             [self.account_id, self.last_used], self.user_name_created_channel,
                                             'Ошибка отправки сообщения!\nНевозможно переслать данное сообщение!', [],
                                             True)
                         error_sent_message = True
+<<<<<<< HEAD
                     except (ValueError, errors.MessageIdsEmptyError, errors.ChannelInvalidError, errors.MessageIdInvalidError):
                         self.task_done.emit(f'',
                                             [self.successful_create, self.failed_create], False,
+=======
+                    except (ValueError, errors.MessageIdsEmptyError, errors.ChannelInvalidError, errors.MessageIdInvalidError) as e:
+                        self.task_done.emit(f'',
+                                            [self.successful_create_channel, self.failed_create_channel], False,
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                                             [self.account_id, self.last_used], self.user_name_created_channel,
                                             'Ошибка отправки сообщения!\nНеверные данные для пересылки сообщения!', [],
                                             True)
@@ -288,7 +370,11 @@ class CreatingChannelWithStreams(QThread): # затухание progress_bar
                         pass
                     return
 
+<<<<<<< HEAD
                 self.successful_create += 1
+=======
+                self.successful_create_channel += 1
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                 await asyncio.sleep(self.delay)
         except asyncio.exceptions.CancelledError: # если экстренно остановили поток и в методе который вызывается с await может произойти такая ошибка
             return
@@ -298,16 +384,20 @@ class CreatingChannelWithStreams(QThread): # затухание progress_bar
             except UnboundLocalError:
                 pass
 
+<<<<<<< HEAD
             error_name = str(type(e).__name__)
             if error_name == 'ConnectionError' and self.stop_thread: # если экстренно остановили поток, может возникнуть такая ошибка
                 return
 
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
             connection = sqlite3.connect(self.root_project_dir + '/working_files/data_base.sqlite3')
             cursor = connection.cursor()
             cursor.execute(f"SELECT user_name FROM accounts WHERE id = ? AND account_status = ?",(self.id_account, 'active'))
             user_name_from_db = cursor.fetchone()  # берём с БД т.к. мы можем даже не войти в аккаунт и тогда не получим его user_name для вывода
             connection.close()
 
+<<<<<<< HEAD
             error_description_solution = get_description_and_solution(error_name)
             self.task_done.emit(f'На аккаунте "{user_name_from_db[0]}" произошла ошибка он будет убран из активных.\nОшибка: '
                                 f'{error_description_solution[0]}\nСозданных каналов: {self.successful_create} из {self.max_channel_from_one_account}',
@@ -317,6 +407,18 @@ class CreatingChannelWithStreams(QThread): # затухание progress_bar
 
         self.task_done.emit(f'Аккаунт "{self.me.username}" закончил создание\nСозданных каналов: {self.successful_create} из {self.max_channel_from_one_account}',
             [self.successful_create, self.failed_create], False,
+=======
+            error_type = type(e)
+            error_description_solution = get_description_and_solution(str(error_type.__name__))
+            self.task_done.emit(f'На аккаунте "{user_name_from_db[0]}" произошла ошибка он будет убран из активных.\nОшибка: '
+                                f'{error_description_solution[0]}\nСозданных каналов: {self.successful_create_channel} из {self.max_channel_from_one_account}',
+                                [self.successful_create_channel, self.failed_create_channel], True, [self.account_id, self.last_used],
+                                self.user_name_created_channel, '',[str(error_type.__name__), self.id_account], True)
+            return
+
+        self.task_done.emit(f'Аккаунт "{self.me.username}" закончил создание\nСозданных каналов: {self.successful_create_channel} из {self.max_channel_from_one_account}',
+            [self.successful_create_channel, self.failed_create_channel], False,
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
             [self.account_id, self.last_used], self.user_name_created_channel, '', [],True)
         try:
             await self.client.disconnect()
@@ -327,7 +429,10 @@ class CreatingChannelWithStreams(QThread): # затухание progress_bar
 
     async def quit_async(self):
         """Асинхронный метод для завершения потока"""
+<<<<<<< HEAD
         self.stop_thread = True
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         try:
             await self.client.disconnect()
         except Exception:
@@ -346,8 +451,13 @@ class CreatingChannelWithStreams(QThread): # затухание progress_bar
 
         self.task_done.emit(
             f'Вы остановили создание каналов с аккаунта: "{user_name}"'
+<<<<<<< HEAD
             f'\nСозданных каналов: {self.successful_create} из {self.max_channel_from_one_account}',
             [self.successful_create, self.failed_create], False,
+=======
+            f'\nСозданных каналов: {self.successful_create_channel} из {self.max_channel_from_one_account}',
+            [self.successful_create_channel, self.failed_create_channel], False,
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
             [self.account_id, self.last_used], self.user_name_created_channel, '', [], True)
         self.terminate()  # Принудительное завершение
 
@@ -383,8 +493,13 @@ class WindowCreateChannel(WindowCreateChannelUi):
         self.launched_create = False  # отображает запущенно ли создание
         self.original_socket = socket.socket  # проки который был до
         self.id_and_last_use = []  # хранит массивы в которых tg_id аккаунта и его последнее использование
+<<<<<<< HEAD
         self.quantity_accounts_for_create_channel = 0  # количество аккаунтов для создания
         self.quantity_accounts_ending_create_channel = 0  # количество аккаунтов закончивших создание
+=======
+        self.quantity_accounts_for_create_channel = 0  # количество аккаунтов для создания каналов
+        self.quantity_accounts_ending_create_channel = 0  # количество аккаунтов закончивших рассылку
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.error_and_id_errors_accounts = []  # хранит массивы в которых ошибка и id папки, где произошла эта ошибка
         self.user_names_created_channel = [] # user_name список созданных каналов
 
@@ -404,7 +519,11 @@ class WindowCreateChannel(WindowCreateChannelUi):
                        f"forwarding_username, "
                        f"forwarding_id_message "
                        f"FROM saved_data_creating_channels")
+<<<<<<< HEAD
         data_from_db = cursor.fetchone()
+=======
+        data_from_db = cursor.fetchone()  # берём с БД т.к. мы можем даже не войти в аккаунт и тогда не получим его user_name для вывода
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         connection.close()
 
         # заполнение данных с БД
@@ -427,7 +546,10 @@ class WindowCreateChannel(WindowCreateChannelUi):
         self.pushButton_parser.clicked.connect(lambda: self._transition('parser'))
         self.pushButton_proxy.clicked.connect(lambda: self._transition('proxy'))
         self.pushButton_bomber.clicked.connect(lambda: self._transition('bomber'))
+<<<<<<< HEAD
         self.pushButton_create_bot.clicked.connect(lambda: self._transition('create_bot'))
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_enter_group.clicked.connect(lambda: self._transition('enter_group'))
         self.pushButton_reactions.clicked.connect(lambda: self._transition('reactions'))
         self.pushButton_comment.clicked.connect(lambda: self._transition('comment'))
@@ -454,7 +576,11 @@ class WindowCreateChannel(WindowCreateChannelUi):
         self.lineEdit_quantity_streams.textChanged.connect(lambda: self._line_edit_quantity_editing_finished())
 
         self.pushButton_random_choice_photo.clicked.connect(lambda: self._choice_photo())
+<<<<<<< HEAD
         self.pushButton_choose_first_message.clicked.connect(lambda: self._choose_first_message())
+=======
+        self.pushButton_choose_file_for_mailing.clicked.connect(lambda: self._choose_file_for_mailing())
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_choose_user_name.clicked.connect(lambda: self._choose_user_name())
 
         self.pushButton_start.clicked.connect(lambda: self._start())
@@ -477,6 +603,16 @@ class WindowCreateChannel(WindowCreateChannelUi):
         else:
             self.switch_window(target_window)
 
+<<<<<<< HEAD
+=======
+    def _update_data_in_db(self, data, column):
+        connection = sqlite3.connect(self.root_project_dir + '/working_files/data_base.sqlite3')
+        cursor = connection.cursor()
+        cursor.execute(f"UPDATE saved_data_creating_channels SET {column} = ?",(data,))
+        connection.commit()
+        connection.close()
+
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
     def _set_default_style_line_edit(self,line_edit: QLineEdit):
         line_edit.setStyleSheet("""QLineEdit {
          background-color: rgb(255, 255, 255);      /* Цвет фона текстового поля */
@@ -562,7 +698,11 @@ class WindowCreateChannel(WindowCreateChannelUi):
         path = os.path.abspath(self.root_project_dir + "/working_files/for_create_channel/photo_for_avatar_channel")
         os.startfile(path)
 
+<<<<<<< HEAD
     def _choose_first_message(self):
+=======
+    def _choose_file_for_mailing(self):
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         dialog = DialogFirstMessage(self.data_first_message)  # Создаем экземпляр
         dialog.data_returned.connect(self._set_data_for_first_message)  # Подключаем сигнал
         dialog.exec_()  # Открываем модальное окно
@@ -661,7 +801,11 @@ class WindowCreateChannel(WindowCreateChannelUi):
 
         return {"user_names": result, "there_are_inappropriate_values": there_are_inappropriate_values}
 
+<<<<<<< HEAD
     def _handler_signal_with_streams(self, console_output: str, counter_created_and_uncreated: list,
+=======
+    def _handler_signal_with_streams(self, console_output: str, counter_sent_and_unsuccessful_message: list,
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                                     account_banned: bool, id_and_last_use: list, user_names_created_channel: list,
                                     error: str, error_and_id_account: list, end_create_from_this_account: bool):
         if console_output:
@@ -669,11 +813,19 @@ class WindowCreateChannel(WindowCreateChannelUi):
             formatted_time = current_time.strftime("%H:%M:%S")  # Форматируем время сейчас
             self.textEdit_conclusion.append(f'[{formatted_time}] {console_output}')
 
+<<<<<<< HEAD
         if counter_created_and_uncreated:
             self.count_attempts += counter_created_and_uncreated[0] + counter_created_and_uncreated[1]
             self.label_successfully.setText(str(counter_created_and_uncreated[0] + int(self.label_successfully.text())))
             self.label_unsuccessful.setText(str(counter_created_and_uncreated[1] + int(self.label_unsuccessful.text())))
             self.label_count_attempts.setText(str(counter_created_and_uncreated[0] + counter_created_and_uncreated[1] + int(self.label_count_attempts.text())))
+=======
+        if counter_sent_and_unsuccessful_message:
+            self.count_attempts += counter_sent_and_unsuccessful_message[0] + counter_sent_and_unsuccessful_message[1]
+            self.label_successfully.setText(str(counter_sent_and_unsuccessful_message[0] + int(self.label_successfully.text())))
+            self.label_unsuccessful.setText(str(counter_sent_and_unsuccessful_message[1] + int(self.label_unsuccessful.text())))
+            self.label_count_attempts.setText(str(counter_sent_and_unsuccessful_message[0] + counter_sent_and_unsuccessful_message[1] + int(self.label_count_attempts.text())))
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
 
         if account_banned:
             self.label_banned_account.setText( str(int(self.label_banned_account.text()) + 1))
@@ -684,9 +836,12 @@ class WindowCreateChannel(WindowCreateChannelUi):
 
         if error:
             if self.launched_create: # если создание запущено
+<<<<<<< HEAD
                 for thread in self.active_threads: # принудительно завершаем потоки
                     asyncio.run(thread.quit_async())
 
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                 self._set_enabled_for_elements(True)
                 self.launched_create = False # останавливаем создание
                 info = DialogInfo("Внимание!", error, "notification.mp3")
@@ -736,6 +891,14 @@ class WindowCreateChannel(WindowCreateChannelUi):
                     info_channel_user_name = DialogListCreateChannel(self.user_names_created_channel)
                     info_channel_user_name.exec_()
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
     def _start(self):
         if not self.launched_create: # если создание не запущенно
             style_line_edit = ("QLineEdit {\n"
@@ -754,6 +917,17 @@ class WindowCreateChannel(WindowCreateChannelUi):
 
             error_message = ""
 
+<<<<<<< HEAD
+=======
+            if self.textEdit_name_channel_list.toPlainText() == "":
+                error_message += "Введите список имён канала!\n"
+                self.textEdit_name_channel_list.setStyleSheet(style_text_edit)
+
+            if self.textEdit_description_list.toPlainText() == "" and self.checkBox_set_description.isChecked() == True:
+                error_message += "Введите список описаний канала!\n"
+                self.textEdit_description_list.setStyleSheet(style_text_edit)
+
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
             if self.lineEdit_max_create_channel_from_one_account.text() == "":
                 error_message += "Введите максимум созданных каналов с одного аккаунта!\n"
                 self.lineEdit_max_create_channel_from_one_account.setStyleSheet(style_line_edit)
@@ -766,6 +940,7 @@ class WindowCreateChannel(WindowCreateChannelUi):
                 error_message += "Введите количество запущенных потоков!\n"
                 self.lineEdit_quantity_streams.setStyleSheet(style_line_edit)
 
+<<<<<<< HEAD
             channel_name_list = []
             for one_name in self.textEdit_name_channel_list.toPlainText().split('\n'):
                 if one_name.replace(" ", "").replace("\n", "").replace("\t", ""):  # если имя не пустое
@@ -783,6 +958,8 @@ class WindowCreateChannel(WindowCreateChannelUi):
                     error_message += "Введите корректные данные для описания!\n"
                     self.textEdit_description_list.setStyleSheet(style_text_edit)
 
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
             if error_message:
                 info = DialogInfo("Внимание!", error_message, "notification.mp3")
                 info.exec_()
@@ -850,6 +1027,12 @@ class WindowCreateChannel(WindowCreateChannelUi):
             if self.data_for_user_name_channel['use_third_list']:
                 list_for_generate_user_name.append(self.data_for_user_name_channel['third_list'])
 
+<<<<<<< HEAD
+=======
+            channel_name_list = self.textEdit_name_channel_list.toPlainText().split('\n')
+            channel_name_list = list(filter(None, channel_name_list)) # убираем все пустые элементы ""
+            description_list = self.textEdit_description_list.toPlainText().split('&')
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
             dict_witch_user_names = self._generate_unique_user_name(list_for_generate_user_name)
 
             if (self.data_for_user_name_channel['use_first_list'] == True or self.data_for_user_name_channel['use_second_list'] == True

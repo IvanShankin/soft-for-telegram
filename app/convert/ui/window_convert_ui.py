@@ -40,6 +40,7 @@ class WindowConvertUi(QtWidgets.QMainWindow):
                                         "border: none;")
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollArea_3.setObjectName("scrollArea_3")
+<<<<<<< HEAD
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
         self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 270, 850))
         self.scrollAreaWidgetContents.setStyleSheet("")
@@ -49,6 +50,17 @@ class WindowConvertUi(QtWidgets.QMainWindow):
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.pushButton_account_2 = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+=======
+        self.scrollAreaWidgetContents_3 = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 270, 850))
+        self.scrollAreaWidgetContents_3.setStyleSheet("")
+        self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_3)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setSpacing(0)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.pushButton_account_2 = QtWidgets.QPushButton(self.scrollAreaWidgetContents_3)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_account_2.setEnabled(True)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -72,7 +84,11 @@ class WindowConvertUi(QtWidgets.QMainWindow):
         self.pushButton_account_2.setCheckable(False)
         self.pushButton_account_2.setObjectName("pushButton_account_2")
         self.verticalLayout.addWidget(self.pushButton_account_2)
+<<<<<<< HEAD
         self.label_9 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+=======
+        self.label_9 = QtWidgets.QLabel(self.scrollAreaWidgetContents_3)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -82,7 +98,11 @@ class WindowConvertUi(QtWidgets.QMainWindow):
         self.label_9.setText("")
         self.label_9.setObjectName("label_9")
         self.verticalLayout.addWidget(self.label_9)
+<<<<<<< HEAD
         self.pushButton_account = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+=======
+        self.pushButton_account = QtWidgets.QPushButton(self.scrollAreaWidgetContents_3)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_account.setEnabled(True)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -116,7 +136,11 @@ class WindowConvertUi(QtWidgets.QMainWindow):
         self.pushButton_account.setCheckable(False)
         self.pushButton_account.setObjectName("pushButton_account")
         self.verticalLayout.addWidget(self.pushButton_account)
+<<<<<<< HEAD
         self.pushButton_mailing = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+=======
+        self.pushButton_mailing = QtWidgets.QPushButton(self.scrollAreaWidgetContents_3)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -146,7 +170,11 @@ class WindowConvertUi(QtWidgets.QMainWindow):
         self.pushButton_mailing.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_mailing.setObjectName("pushButton_mailing")
         self.verticalLayout.addWidget(self.pushButton_mailing)
+<<<<<<< HEAD
         self.pushButton_mailing_chat = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+=======
+        self.pushButton_mailing_chat = QtWidgets.QPushButton(self.scrollAreaWidgetContents_3)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         font = QtGui.QFont()
         font.setPointSize(10)
         self.pushButton_mailing_chat.setFont(font)
@@ -167,7 +195,11 @@ class WindowConvertUi(QtWidgets.QMainWindow):
         self.pushButton_mailing_chat.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_mailing_chat.setObjectName("pushButton_mailing_chat")
         self.verticalLayout.addWidget(self.pushButton_mailing_chat)
+<<<<<<< HEAD
         self.pushButton_invite = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+=======
+        self.pushButton_invite = QtWidgets.QPushButton(self.scrollAreaWidgetContents_3)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -197,7 +229,11 @@ class WindowConvertUi(QtWidgets.QMainWindow):
         self.pushButton_invite.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_invite.setObjectName("pushButton_invite")
         self.verticalLayout.addWidget(self.pushButton_invite)
+<<<<<<< HEAD
         self.pushButton_parser = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+=======
+        self.pushButton_parser = QtWidgets.QPushButton(self.scrollAreaWidgetContents_3)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -227,7 +263,11 @@ class WindowConvertUi(QtWidgets.QMainWindow):
         self.pushButton_parser.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_parser.setObjectName("pushButton_parser")
         self.verticalLayout.addWidget(self.pushButton_parser)
+<<<<<<< HEAD
         self.pushButton_proxy = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+=======
+        self.pushButton_proxy = QtWidgets.QPushButton(self.scrollAreaWidgetContents_3)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -258,7 +298,11 @@ class WindowConvertUi(QtWidgets.QMainWindow):
         self.pushButton_proxy.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_proxy.setObjectName("pushButton_proxy")
         self.verticalLayout.addWidget(self.pushButton_proxy)
+<<<<<<< HEAD
         self.pushButton_bomber = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+=======
+        self.pushButton_bomber = QtWidgets.QPushButton(self.scrollAreaWidgetContents_3)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_bomber.setMinimumSize(QtCore.QSize(185, 0))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -283,7 +327,11 @@ class WindowConvertUi(QtWidgets.QMainWindow):
         self.pushButton_bomber.setObjectName("pushButton_bomber")
         self.verticalLayout.addWidget(self.pushButton_bomber)
 
+<<<<<<< HEAD
         self.pushButton_create_channel = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+=======
+        self.pushButton_create_channel = QtWidgets.QPushButton(self.scrollAreaWidgetContents_3)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         font = QtGui.QFont()
         font.setPointSize(10)
         self.pushButton_create_channel.setFont(font)
@@ -305,6 +353,7 @@ class WindowConvertUi(QtWidgets.QMainWindow):
                                                      "                background-color:rgb(3, 11, 22); /* Цвет фона при нажатии */\n"
                                                      "            }")
         self.pushButton_create_channel.setObjectName("pushButton_create_channel")
+<<<<<<< HEAD
         self.verticalLayout.addWidget(self.pushButton_create_channel)
 
         self.pushButton_create_bot = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
@@ -333,6 +382,12 @@ class WindowConvertUi(QtWidgets.QMainWindow):
         self.verticalLayout.addWidget(self.pushButton_create_bot)
 
         self.pushButton_enter_group = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+=======
+        self.pushButton_create_channel.setText('   Массовое создание каналов')
+        self.verticalLayout.addWidget(self.pushButton_create_channel)
+
+        self.pushButton_enter_group = QtWidgets.QPushButton(self.scrollAreaWidgetContents_3)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         font = QtGui.QFont()
         font.setPointSize(10)
         self.pushButton_enter_group.setFont(font)
@@ -355,7 +410,11 @@ class WindowConvertUi(QtWidgets.QMainWindow):
         self.pushButton_enter_group.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_enter_group.setObjectName("pushButton_enter_group")
         self.verticalLayout.addWidget(self.pushButton_enter_group)
+<<<<<<< HEAD
         self.pushButton_reactions = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+=======
+        self.pushButton_reactions = QtWidgets.QPushButton(self.scrollAreaWidgetContents_3)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         font = QtGui.QFont()
         font.setPointSize(10)
         self.pushButton_reactions.setFont(font)
@@ -378,7 +437,11 @@ class WindowConvertUi(QtWidgets.QMainWindow):
         self.pushButton_reactions.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_reactions.setObjectName("pushButton_reactions")
         self.verticalLayout.addWidget(self.pushButton_reactions)
+<<<<<<< HEAD
         self.pushButton_comment = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+=======
+        self.pushButton_comment = QtWidgets.QPushButton(self.scrollAreaWidgetContents_3)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         font = QtGui.QFont()
         font.setPointSize(10)
         self.pushButton_comment.setFont(font)
@@ -401,7 +464,11 @@ class WindowConvertUi(QtWidgets.QMainWindow):
         self.pushButton_comment.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_comment.setObjectName("pushButton_comment")
         self.verticalLayout.addWidget(self.pushButton_comment)
+<<<<<<< HEAD
         self.pushButton_convert = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+=======
+        self.pushButton_convert = QtWidgets.QPushButton(self.scrollAreaWidgetContents_3)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -432,7 +499,11 @@ class WindowConvertUi(QtWidgets.QMainWindow):
         self.pushButton_convert.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_convert.setObjectName("pushButton_convert")
         self.verticalLayout.addWidget(self.pushButton_convert)
+<<<<<<< HEAD
         self.pushButton_doc = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+=======
+        self.pushButton_doc = QtWidgets.QPushButton(self.scrollAreaWidgetContents_3)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -462,7 +533,11 @@ class WindowConvertUi(QtWidgets.QMainWindow):
         self.pushButton_doc.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_doc.setObjectName("pushButton_doc")
         self.verticalLayout.addWidget(self.pushButton_doc)
+<<<<<<< HEAD
         self.label_8 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+=======
+        self.label_8 = QtWidgets.QLabel(self.scrollAreaWidgetContents_3)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -472,7 +547,11 @@ class WindowConvertUi(QtWidgets.QMainWindow):
         self.label_8.setText("")
         self.label_8.setObjectName("label_8")
         self.verticalLayout.addWidget(self.label_8)
+<<<<<<< HEAD
         self.scrollArea_3.setWidget(self.scrollAreaWidgetContents)
+=======
+        self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_3)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.gridLayout_2.addWidget(self.scrollArea_3, 0, 0, 3, 1)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setContentsMargins(24, -1, -1, 10)
@@ -674,8 +753,11 @@ class WindowConvertUi(QtWidgets.QMainWindow):
         self.pushButton_parser.setText(_translate("MainWindow", "   Парсер"))
         self.pushButton_proxy.setText(_translate("MainWindow", "   Прокси"))
         self.pushButton_bomber.setText(_translate("MainWindow", "   Бомбер на аккаунт"))
+<<<<<<< HEAD
         self.pushButton_create_channel.setText(_translate("MainWindow", "   Массовое создание каналов"))
         self.pushButton_create_bot.setText(_translate("MainWindow", "   Массовое создание ботов"))
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_enter_group.setText(_translate("MainWindow", "   Массовый заход в группу"))
         self.pushButton_reactions.setText(_translate("MainWindow", "   Накрутка реакций"))
         self.pushButton_comment.setText(_translate("MainWindow", "   Накрутка комментариев"))

@@ -92,7 +92,11 @@ class InvaiteOneStream(QThread): # затухание progress_bar
 
                     self.main_client = await tdesk.ToTelethon(session=f"{folder_path_main_account}/session.session",flag=UseCurrentSession,)
 
+<<<<<<< HEAD
                     await asyncio.wait_for(self.main_client.connect(), timeout=15)  # вход в аккаунт
+=======
+                    await asyncio.wait_for(self.main_client.connect(), timeout=10)  # вход в аккаунт
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                     self.me_main_account = await self.main_client.get_me()
                     id_main_account = self.me_main_account.id # выйдет ошибка если не смогли получить данные с аккаунта
 
@@ -116,7 +120,11 @@ class InvaiteOneStream(QThread): # затухание progress_bar
 
                                 self.client = await tdesk.ToTelethon(session=f"{folder_path_active_account}/session.session",flag=UseCurrentSession,)
 
+<<<<<<< HEAD
                                 await asyncio.wait_for(self.client.connect(), timeout=15)  # вход в аккаунт
+=======
+                                await asyncio.wait_for(self.client.connect(), timeout=10)  # вход в аккаунт
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                                 self.me_active_account = await self.client.get_me()
                                 id_active_account = self.me_active_account.id  # выйдет ошибка если не смогли получить данные с аккаунта
 
@@ -349,7 +357,11 @@ class InvaiteOneStream(QThread): # затухание progress_bar
             try:
                 tdesk = TDesktop(f'{path_in_account}/tdata')
                 self.client = await tdesk.ToTelethon(session=f"{path_in_account}/session.session", flag=UseCurrentSession, )
+<<<<<<< HEAD
                 await asyncio.wait_for(self.client.connect(), timeout=15)  # вход в аккаунт
+=======
+                await asyncio.wait_for(self.client.connect(), timeout=10)  # вход в аккаунт
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                 me = await self.client.get_me()
                 test_id = me.id  # выйдет ошибка если не смогли получить данные с аккаунта
             except Exception as e:
@@ -571,7 +583,10 @@ class WindowInvite(WindowInviteUi):
         self.pushButton_proxy.clicked.connect(lambda: self._transition('proxy'))
         self.pushButton_bomber.clicked.connect(lambda: self._transition('bomber'))
         self.pushButton_create_channel.clicked.connect(lambda: self._transition('create_channel'))
+<<<<<<< HEAD
         self.pushButton_create_bot.clicked.connect(lambda: self._transition('create_bot'))
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_enter_group.clicked.connect(lambda: self._transition('enter_group'))
         self.pushButton_reactions.clicked.connect(lambda: self._transition('reactions'))
         self.pushButton_comment.clicked.connect(lambda: self._transition('comment'))

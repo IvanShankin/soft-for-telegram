@@ -60,6 +60,7 @@ class MailingWithStreams(QThread): # затухание progress_bar
         self.password = password
 
         self.client = None
+<<<<<<< HEAD
         self.account_id = None
         self.last_used = ''
 
@@ -68,12 +69,23 @@ class MailingWithStreams(QThread): # затухание progress_bar
         self.list_accounts_which_sent = []
 
         self.stop_thread = False
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
 
     def run(self):
         asyncio.run(self.run_2())
 
     async def run_2(self):
+<<<<<<< HEAD
         me = None
+=======
+        successful_messages = 0
+        failed_messages = 0
+        list_accounts_which_sent = []
+        me = None
+        account_id = None
+        last_used = ''
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
 
         if self.use_proxy:
             socks.set_default_proxy(socks.SOCKS5, self.ip, self.port, True, self.login, self.password)
@@ -85,6 +97,7 @@ class MailingWithStreams(QThread): # затухание progress_bar
 
             self.self.client = await tdesk.ToTelethon(session=f"{folder_path_account}/session.session",flag=UseCurrentSession,)
 
+<<<<<<< HEAD
             await asyncio.wait_for(self.client.connect(), timeout=15)  # вход в аккаунт
             me = await self.client.get_me()
             self.account_id = me.id
@@ -99,19 +112,43 @@ class MailingWithStreams(QThread): # затухание progress_bar
                 cursor.execute(f"SELECT stop_mailing_by_users FROM stop_process", )
                 closure_test = cursor.fetchone()
                 connection.close()
+=======
+            await asyncio.wait_for(self.client.connect(), timeout=7)  # вход в аккаунт
+            me = await self.client.get_me()
+            account_id = me.id
+
+            self.task_done.emit(f'Запущенна рассылка с аккаунта "{me.username}"',[successful_messages, failed_messages],False,[],[], '', [], False)
+
+            for user in self.user_list:
+                while True:# необходимо для предотвращения ошибки если БД была открыта ранее (другим асинхронным потоком)
+                    try:
+                        connection = sqlite3.connect(self.root_project_dir + '/working_files/data_base.sqlite3')
+                        cursor = connection.cursor()
+                        cursor.execute(f"SELECT stop_mailing_by_users FROM stop_process", )
+                        closure_test = cursor.fetchone()
+                        connection.close()
+                        break
+                    except sqlite3.OperationalError:
+                        pass
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
 
                 if closure_test[0] == 1:  # если необходимо остановить рассылку
                     return
 
                 try:
                     now = dt.datetime.now()  # Получаем время именно тут, т.к. может возникнут ошибка и это тоже считается как использование аккаунта
+<<<<<<< HEAD
                     self.last_used = now.strftime('%H:%M %d-%m-%Y')  # Форматируем дату и время согласно формату
+=======
+                    last_used = now.strftime('%H:%M %d-%m-%Y')  # Форматируем дату и время согласно формату
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
 
                     if self.use_file_for_message:
                         await self.client.send_file(user, self.file_path, parse_mode='HTML',caption=self.message)  # отсылка файла
                     else:
                         await self.client.send_message(user, self.message, parse_mode='HTML')  # отправка сообщения
 
+<<<<<<< HEAD
                     self.successful_messages += 1
                     self.list_accounts_which_sent.append(user)
 
@@ -137,12 +174,39 @@ class MailingWithStreams(QThread): # затухание progress_bar
                     self.failed_messages += 1
         except asyncio.exceptions.CancelledError:  # если экстренно остановили поток и в методе который вызывается с await может произойти такая ошибка
             return
+=======
+                    successful_messages += 1
+                    list_accounts_which_sent.append(user)
+
+                    await asyncio.sleep(self.time_sleep)
+                except FileNotFoundError:  # файл не найден
+                    self.task_done.emit('',[successful_messages, failed_messages], False,list_accounts_which_sent, [],
+                                        'Ошибка отсылки файла!\nДобавьте новый файл', [], False)
+                    return
+                except errors.MessageEmptyError:  # Было отправлено пустое или недопустимое сообщение в формате UTF-8.
+                    self.task_done.emit('',[successful_messages, failed_messages], False, list_accounts_which_sent, [],
+                                        'Ошибка отправки сообщения!\nСообщение в недопустимом формате UTF-8', [], False)
+                    return
+                except errors.MessageTooLongError:  # сообщение слишком длинное
+                    self.task_done.emit('', [successful_messages, failed_messages], False, list_accounts_which_sent, [],
+                                        'Ошибка отправки сообщения!\nСообщение слишком длинное.\nМаксимальная длинная = 4096 символов в UTF-8', [], False)
+                    return
+                except (errors.UserPrivacyRestrictedError, errors.ForbiddenError):  # кому хотим отослать стоит настройка приватности что нельзя отсылать или в чёрном списке
+                    list_accounts_which_sent.append(user)
+                    failed_messages += 1
+                except (ValueError, errors.UsernameInvalidError, errors.InputUserDeactivatedError,
+                        errors.YouBlockedUserError, errors.UserIsBlockedError):
+                    list_accounts_which_sent.append(user)
+                    failed_messages += 1
+
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         except (Exception, TFileNotFound) as e:  # здесь ошибки с аккаунтом откуда отсылаем
             try:
                 await self.client.disconnect()
             except UnboundLocalError:
                 pass
 
+<<<<<<< HEAD
             error_name = str(type(e).__name__)
             if error_name == 'ConnectionError' and self.stop_thread: # если экстренно остановили поток, может возникнуть такая ошибка
                 return
@@ -162,6 +226,29 @@ class MailingWithStreams(QThread): # затухание progress_bar
 
         self.task_done.emit(f'Аккаунт "{me.username}" закончил рассылку\nОтосланных сообщений: {self.successful_messages} из {len(self.user_list)}',
             [self.successful_messages, self.failed_messages], False, self.list_accounts_which_sent, [self.account_id, self.last_used], '',[], True)
+=======
+            while True:# необходимо для предотвращения ошибки если БД была открыта ранее (другим асинхронным потоком)
+                try:
+                    connection = sqlite3.connect(self.root_project_dir + '/working_files/data_base.sqlite3')
+                    cursor = connection.cursor()
+                    cursor.execute(f"SELECT user_name FROM accounts WHERE id = ? AND account_status = ?",(self.id_account, 'active'))
+                    user_name_from_db = cursor.fetchone()  # берём с БД т.к. мы можем даже не войти в аккаунт и тогда не получим его user_name для вывода
+                    connection.close()
+                    break
+                except sqlite3.OperationalError:
+                    pass
+
+            error_type = type(e)
+            error_description_solution = get_description_and_solution(str(error_type.__name__))
+            self.task_done.emit(f'На аккаунте "{user_name_from_db[0]}" произошла ошибка он будет убран из активных.\nОшибка: '
+                                f'{error_description_solution[0]}\nОтосланных сообщений: {successful_messages} из {len(self.user_list)}',
+                                [successful_messages, failed_messages], True, list_accounts_which_sent, [account_id, last_used],
+                                '',[str(error_type.__name__), self.id_account], True)
+            return
+
+        self.task_done.emit(f'Аккаунт "{me.username}" закончил рассылку\nОтосланных сообщений: {successful_messages} из {len(self.user_list)}',
+            [successful_messages, failed_messages], False, list_accounts_which_sent, [account_id, last_used], '',[], True)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         try:
             await self.client.disconnect()
         except UnboundLocalError:
@@ -170,11 +257,15 @@ class MailingWithStreams(QThread): # затухание progress_bar
 
     async def quit_async(self):
         """Асинхронный метод для завершения потока"""
+<<<<<<< HEAD
         self.stop_thread = True
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         try:
             await self.client.disconnect()
         except Exception:
             pass
+<<<<<<< HEAD
 
         connection = sqlite3.connect(self.root_project_dir + '/working_files/data_base.sqlite3')
         cursor = connection.cursor()
@@ -189,6 +280,8 @@ class MailingWithStreams(QThread): # затухание progress_bar
             [self.successful_messages, self.failed_messages], True, self.list_accounts_which_sent, [self.account_id, self.last_used],
             '', [], True)
 
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.terminate()  # Принудительное завершение
 
 class MailingOneStream(QThread): # затухание progress_bar
@@ -257,7 +350,11 @@ class MailingOneStream(QThread): # затухание progress_bar
                             error_handler(error_and_id[0], error_and_id[1], 'active')
                     return
                 self.account_counter += 1
+<<<<<<< HEAD
         except (asyncio.exceptions.CancelledError, ConnectionError): # если экстренно остановили поток и в методе который вызывается с await может произойти такая ошибка
+=======
+        except asyncio.exceptions.CancelledError: # если экстренно остановили поток и в методе который вызывается с await может произойти такая ошибка
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
             return
 
     async def mailing(self, proxy: bool, users_list: list) -> list: # 1 параметр это список юзеров по которым отработали,
@@ -357,7 +454,11 @@ class MailingOneStream(QThread): # затухание progress_bar
                     self.task_done.emit(f'пользователь с таким юзернеймом "{user}" не найден',
                                         [self.successful_messages, self.failed_messages, self.banned_accounts], '', False)
 
+<<<<<<< HEAD
         except (asyncio.exceptions.CancelledError, ConnectionError):  # если экстренно остановили поток и в методе который вызывается с await может произойти такая ошибка
+=======
+        except asyncio.exceptions.CancelledError:  # если экстренно остановили поток и в методе который вызывается с await может произойти такая ошибка
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
             return[list_accounts_which_sent, True]
         except (Exception, TFileNotFound) as e:  # здесь ошибки с аккаунтом откуда отсылаем
             socket.socket = self.original_socket
@@ -438,7 +539,10 @@ class WindowMailingByUsers(WindowMailingByUsersUi):
         self.pushButton_proxy.clicked.connect(lambda: self._transition('proxy'))
         self.pushButton_bomber.clicked.connect(lambda: self._transition('bomber'))
         self.pushButton_create_channel.clicked.connect(lambda: self._transition('create_channel'))
+<<<<<<< HEAD
         self.pushButton_create_bot.clicked.connect(lambda: self._transition('create_bot'))
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_enter_group.clicked.connect(lambda: self._transition('enter_group'))
         self.pushButton_reactions.clicked.connect(lambda: self._transition('reactions'))
         self.pushButton_comment.clicked.connect(lambda: self._transition('comment'))
@@ -705,11 +809,14 @@ class WindowMailingByUsers(WindowMailingByUsersUi):
                 self.show_info('Внимание!', 'Введите сообщение для рассылки!')
                 return
 
+<<<<<<< HEAD
             if not check_html_parse(self.textEdit_message.toPlainText()): # если неверный HTML синтаксис
                 self.textEdit_message.setStyleSheet()
                 self.show_info('Внимание!', 'В сообщении для рассылки \nвведён некорректный HTML синтаксис!')
                 return
 
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
             if not self.lineEdit_delay.text():
                 self.lineEdit_delay.setStyleSheet(style)
                 self.show_info('Внимание!', 'Введите задержку между сообщениями !')
@@ -725,6 +832,14 @@ class WindowMailingByUsers(WindowMailingByUsersUi):
                 self.show_info('Внимание!', 'Введите максимум сообщений с одного аккаунта!')
                 return
 
+<<<<<<< HEAD
+=======
+            if not check_html_parse(self.textEdit_message.toPlainText()): # если неверный HTML синтаксис
+                self.lineEdit_max_message_from_one_account.setStyleSheet(style)
+                self.show_info('Внимание!', 'В сообщении для рассылки \nвведён некорректный HTML синтаксис!')
+                return
+
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
             try:
                 # Открываем файл в режиме чтения
                 with open(self.root_project_dir + '/working_files/user_names_for_mailing.txt', 'r') as file:
@@ -848,8 +963,13 @@ class WindowMailingByUsers(WindowMailingByUsersUi):
                 mailing = MailingOneStream(self.textEdit_message.toPlainText(),list_users,int(self.lineEdit_delay.text()),int(self.lineEdit_max_message.text()),
                                                   int(self.lineEdit_max_message_from_one_account.text()),self.checkBox_use_file_for_message.isChecked(),
                                                   self.file_path_for_mailing, self.checkBox_use_proxy.isChecked())  # Инициализируем рабочий поток
+<<<<<<< HEAD
                 mailing.task_done.connect(self.handler_signal)  # Подключаем сигнал к слоту
                 mailing.start()  # Запускаем поток
+=======
+                self.mailing.task_done.connect(self.handler_signal)  # Подключаем сигнал к слоту
+                self.mailing.start()  # Запускаем поток
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
 
                 self.active_threads.append(mailing)
 

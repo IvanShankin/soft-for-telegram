@@ -6,12 +6,22 @@ import sqlite3
 def get_description_and_solution(error: str):
     description_and_solution = []
 
+<<<<<<< HEAD
 
     if (error == 'PhoneNumberInvalidError' or error == 'UsernameOccupiedError' or error == 'AuthKeyUnregisteredError'
           or error == 'TimeoutError' or error == 'TypeError' or error == 'ConnectionError' or error == 'AttributeError'):
         description_and_solution.append('Устаревшие данные для входа')
         description_and_solution.append('Войдите в tg аккаунт и добавьте новую tdata в программу')
     elif error == 'UserDeactivatedBanError' or error =='ChatNotFound':# ChatNotFound может возникнуть когда аккаунт заблокирован и тем самым он не может найти чат
+=======
+    if error == 'флуд':
+        pass # дописать ситуацию если получили ограничения за флуд
+    elif (error == 'PhoneNumberInvalidError' or error == 'UsernameOccupiedError' or error == 'AuthKeyUnregisteredError'
+          or error == 'TimeoutError' or error == 'TypeError' or error == 'ConnectionError'):
+        description_and_solution.append('Устаревшие данные для входа')
+        description_and_solution.append('Войдите в tg аккаунт и добавьте новую tdata в программу')
+    elif error == 'UserDeactivatedBanError':
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         description_and_solution.append('Аккаунт заблокирован')
         description_and_solution.append('Удалите аккаунт')
     elif error == 'SessionPasswordNeededError':
@@ -38,7 +48,11 @@ def error_handler(error: str,id_folder: int,account_type: str)-> list: # нео�
         _change_db(id_folder, account_type, temporary_ban,'temporary_ban', description_and_solution)
     elif (error == 'PhoneNumberInvalidError' or error == 'UsernameOccupiedError' or error == 'AuthKeyUnregisteredError'
           or error == 'TimeoutError' or error == 'UserDeactivatedBanError' or error == 'SessionPasswordNeededError'
+<<<<<<< HEAD
             or error == 'TypeError' or error == 'ConnectionError' or error == 'AttributeError'):
+=======
+            or error == 'TypeError' or error == 'ConnectionError'):
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         id_in_login_error = _change_folder(id_folder, account_type,'login_error')
         _change_db(id_folder, account_type, id_in_login_error, 'login_error', description_and_solution)
     else:
@@ -50,7 +64,10 @@ def error_handler(error: str,id_folder: int,account_type: str)-> list: # нео�
 def _change_folder(id_folder: int,account_type: str, target_account_type: str):
     root_project_dir = '..'
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
     folder_path = root_project_dir + f'/accounts/{account_type}_accounts'
 
     directory_name = folder_path + "/" + str(id_folder)

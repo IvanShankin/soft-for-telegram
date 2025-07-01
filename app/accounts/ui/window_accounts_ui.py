@@ -1218,6 +1218,7 @@ class WindowAccountsUi(QtWidgets.QMainWindow):
                                                      "                background-color:rgb(3, 11, 22); /* Цвет фона при нажатии */\n"
                                                      "            }")
         self.pushButton_create_channel.setObjectName("pushButton_create_channel")
+<<<<<<< HEAD
         self.verticalLayout.addWidget(self.pushButton_create_channel)
 
         self.pushButton_create_bot = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
@@ -1244,6 +1245,11 @@ class WindowAccountsUi(QtWidgets.QMainWindow):
         self.pushButton_create_bot.setObjectName("pushButton_create_bot")
         self.verticalLayout.addWidget(self.pushButton_create_bot)
 
+=======
+        self.pushButton_create_channel.setText('   Массовое создание каналов')
+        self.verticalLayout.addWidget(self.pushButton_create_channel)
+
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_enter_group = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -1460,8 +1466,11 @@ class WindowAccountsUi(QtWidgets.QMainWindow):
         self.pushButton_parser.setText(_translate("MainWindow", "   Парсер"))
         self.pushButton_proxy.setText(_translate("MainWindow", "   Прокси"))
         self.pushButton_bomber.setText(_translate("MainWindow", "   Бомбер на аккаунт"))
+<<<<<<< HEAD
         self.pushButton_create_channel.setText(_translate("MainWindow", "   Массовое создание каналов"))
         self.pushButton_create_bot.setText(_translate("MainWindow", "   Массовое создание ботов"))
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_enter_group.setText(_translate("MainWindow", "   Массовый заход в группу"))
         self.pushButton_reactions.setText(_translate("MainWindow", "   Накрутка реакций"))
         self.pushButton_comment.setText(_translate("MainWindow", "   Накрутка комментариев"))

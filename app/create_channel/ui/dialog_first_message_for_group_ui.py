@@ -319,7 +319,11 @@ class DialogFirstMessageUi(QDialog):
                                                     "}")
         self.lineEdit_user_name_group.setMaxLength(32)
         self.lineEdit_user_name_group.setObjectName("lineEdit_user_name_group")
+<<<<<<< HEAD
         validator = QRegExpValidator(QRegExp(r"^[a-zA-Z0-9_]*$"))  # Разрешаем только цифры и английские буквы (целые числа любой длины)
+=======
+        validator = QRegExpValidator(QRegExp(r"^[a-zA-Z0-9_]*$"))  # Разрешаем только цифры (целые числа любой длины)
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.lineEdit_user_name_group.setValidator(validator)
         self.gridLayout_20.addWidget(self.lineEdit_user_name_group, 0, 1, 1, 1)
         self.lineEdit_ID_message = QtWidgets.QLineEdit(self.groupBox_4)

@@ -90,7 +90,11 @@ class DialogMoreInfoAccount(DialogMoreInfoAccountUi):
             client = await tdesk.ToTelethon(
                 session = self.root_project_dir + f"/accounts/{self.account_type}_accounts/{self.id}/session.session",
                 flag = UseCurrentSession)
+<<<<<<< HEAD
             await asyncio.wait_for(client.connect(), timeout=15)  # вход в аккаунт
+=======
+            await asyncio.wait_for(client.connect(), timeout=5)  # вход в аккаунт
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
             me = await client.get_me()
 
             if account_from_db[1] != self.lineEdit_name.text():
@@ -308,7 +312,11 @@ class DialogMoreInfoAccount(DialogMoreInfoAccountUi):
         try:
             tdesk = TDesktop(self.root_project_dir + f'/accounts/{self.account_type}_accounts/{self.id}/tdata')
             client = await tdesk.ToTelethon(session=self.root_project_dir + f"/accounts/{self.account_type}_accounts/{self.id}/session.session",flag=UseCurrentSession)
+<<<<<<< HEAD
             await asyncio.wait_for(client.connect(), timeout=15)  # вход в аккаунт
+=======
+            await asyncio.wait_for(client.connect(), timeout=5)  # вход в аккаунт
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
             me = await client.get_me()
             full_user = await client(GetFullUserRequest(me.id))
             await client.disconnect()

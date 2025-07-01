@@ -37,7 +37,10 @@ class WindowProxy(WindowProxyUi):
         self.pushButton_parser.clicked.connect(lambda: self.switch_window('parser'))
         self.pushButton_bomber.clicked.connect(lambda: self.switch_window('bomber'))
         self.pushButton_create_channel.clicked.connect(lambda: self.switch_window('create_channel'))
+<<<<<<< HEAD
         self.pushButton_create_bot.clicked.connect(lambda: self.switch_window('create_bot'))
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_enter_group.clicked.connect(lambda: self.switch_window('enter_group'))
         self.pushButton_reactions.clicked.connect(lambda: self.switch_window('reactions'))
         self.pushButton_comment.clicked.connect(lambda: self.switch_window('comment'))

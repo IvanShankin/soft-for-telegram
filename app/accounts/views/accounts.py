@@ -45,7 +45,11 @@ from PyQt5.QtGui import QPixmap, QIcon
 from PyQt5.QtCore import QThread, pyqtSignal, QPropertyAnimation, Qt
 
 
+<<<<<<< HEAD
 class ShowAccount(QThread):
+=======
+class show_account(QThread):
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
 
     # если есть второй список, то значит не смогли войти в аккаунт
     task_done = pyqtSignal(list, bool)# Сигнал, который мы будем использовать для обновления интерфейса
@@ -72,7 +76,11 @@ class ShowAccount(QThread):
         try:
             tdesk = TDesktop(self.folder_path_account + '/tdata')
             client = await tdesk.ToTelethon(session=f"{self.folder_path_account}/session.session", flag=UseCurrentSession)
+<<<<<<< HEAD
             await asyncio.wait_for( client.connect(),timeout=15 ) # вход в аккаунт
+=======
+            await asyncio.wait_for( client.connect(),timeout=7 ) # вход в аккаунт
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
             me = await client.get_me()
             test_id = me.id
             await client.disconnect()
@@ -118,7 +126,10 @@ class WindowAccounts(WindowAccountsUi):
         self.pushButton_proxy.clicked.connect(lambda: self._transition('proxy'))
         self.pushButton_bomber.clicked.connect(lambda: self._transition('bomber'))
         self.pushButton_create_channel.clicked.connect(lambda: self._transition('create_channel'))
+<<<<<<< HEAD
         self.pushButton_create_bot.clicked.connect(lambda: self._transition('create_bot'))
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_enter_group.clicked.connect(lambda: self._transition('enter_group'))
         self.pushButton_reactions.clicked.connect(lambda: self._transition('reactions'))
         self.pushButton_comment.clicked.connect(lambda: self._transition('comment'))
@@ -221,7 +232,11 @@ class WindowAccounts(WindowAccountsUi):
             id_account = 0
             while True:
                 if os.path.isdir(self.root_project_dir + f'/accounts/{type_accounts}_accounts/{id_account}'):  # если аккаунт есть
+<<<<<<< HEAD
                     show_account_stream = ShowAccount(self.root_project_dir + f'/accounts/{type_accounts}_accounts/{id_account}',
+=======
+                    show_account_stream = show_account(self.root_project_dir + f'/accounts/{type_accounts}_accounts/{id_account}',
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                                                        id_account, type_accounts,proxy,proxy_from_db[0],
                                                        proxy_from_db[1],proxy_from_db[2],proxy_from_db[3])  # Инициализируем рабочий поток
                     show_account_stream.task_done.connect(self._show_account_done)  # Подключаем сигнал к слоту
@@ -484,6 +499,14 @@ class WindowAccounts(WindowAccountsUi):
         self._fading_progress_bar()  # вызываем затухание
 
     def _move_accounts(self,button: QPushButton):
+<<<<<<< HEAD
+=======
+        if self.selected_account_type == 'login_error':
+            error_info = DialogInfo('Внимание!', 'С данного раздела нельзя\nперемещать аккаунты!', 'notification.mp3')
+            error_info.exec_()  # Открываем
+            return
+
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         selected_rows = set()
         for item in self.tableWidget_account.selectedItems():
             selected_rows.add(item.row())  # добавляем номер строки и добавляем в множество

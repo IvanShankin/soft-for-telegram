@@ -90,7 +90,11 @@ class Parsing(QThread):
                 tdesk = TDesktop(f'{self.root_project_dir}/accounts/active_accounts/{id_account}/tdata')
                 self.client = await tdesk.ToTelethon(session=f"{self.root_project_dir}/accounts/active_accounts/{id_account}/session.session",
                                                 flag=UseCurrentSession)
+<<<<<<< HEAD
                 await asyncio.wait_for( self.client.connect(),15 ) # вход в аккаунт
+=======
+                await asyncio.wait_for( self.client.connect(),timeout=7 ) # вход в аккаунт
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                 me = await self.client.get_me()
                 test_id = me.id
 
@@ -263,7 +267,10 @@ class WindowParser(WindowParserUi):
         self.pushButton_proxy.clicked.connect(lambda: self._transition('proxy'))
         self.pushButton_bomber.clicked.connect(lambda: self._transition('bomber'))
         self.pushButton_create_channel.clicked.connect(lambda: self._transition('create_channel'))
+<<<<<<< HEAD
         self.pushButton_create_bot.clicked.connect(lambda: self._transition('create_bot'))
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_enter_group.clicked.connect(lambda: self._transition('enter_group'))
         self.pushButton_reactions.clicked.connect(lambda: self._transition('reactions'))
         self.pushButton_comment.clicked.connect(lambda: self._transition('comment'))

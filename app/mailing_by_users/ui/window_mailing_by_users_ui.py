@@ -317,6 +317,7 @@ class WindowMailingByUsersUi(QtWidgets.QMainWindow):
                                                      "                background-color:rgb(3, 11, 22); /* Цвет фона при нажатии */\n"
                                                      "            }")
         self.pushButton_create_channel.setObjectName("pushButton_create_channel")
+<<<<<<< HEAD
         self.verticalLayout.addWidget(self.pushButton_create_channel)
 
         self.pushButton_create_bot = QtWidgets.QPushButton(self.scrollAreaWidgetContents_3)
@@ -344,6 +345,11 @@ class WindowMailingByUsersUi(QtWidgets.QMainWindow):
         self.pushButton_create_bot.setObjectName("pushButton_create_bot")
         self.verticalLayout.addWidget(self.pushButton_create_bot)
 
+=======
+        self.pushButton_create_channel.setText('   Массовое создание каналов')
+        self.verticalLayout.addWidget(self.pushButton_create_channel)
+
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_enter_group = QtWidgets.QPushButton(self.scrollAreaWidgetContents_3)
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -1340,9 +1346,12 @@ class WindowMailingByUsersUi(QtWidgets.QMainWindow):
                                                        "    background-color: rgb(255, 255, 255);\n"
                                                        "    text-align: center;\n"
                                                        "    border-radius: 17px;\n"
+<<<<<<< HEAD
                                                        "	 padding: 10px;"
                                                         "    padding-left: 20px;"
                                                         "    padding-right: 20px;"
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                                                        "   }\n"
                                                        "QPushButton:hover {\n"
                                                        "    background-color: rgb(230, 230, 230); /* Цвет фона при наведении (немного серый) */\n"
@@ -1351,6 +1360,10 @@ class WindowMailingByUsersUi(QtWidgets.QMainWindow):
                                                        "QPushButton:pressed {\n"
                                                        "     background: rgb(210, 210, 213); /* Цвет фона при нажатии (еще серее) */\n"
                                                        "}")
+<<<<<<< HEAD
+=======
+        self.pushButton_clear_conclusion.setIconSize(QtCore.QSize(60, 60))
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_clear_conclusion.setObjectName("pushButton_clear_conclusion")
         self.gridLayout_8.addWidget(self.pushButton_clear_conclusion, 1, 1, 1, 1)
         self.gridLayout_12.addLayout(self.gridLayout_8, 3, 3, 1, 1)
@@ -1373,8 +1386,11 @@ class WindowMailingByUsersUi(QtWidgets.QMainWindow):
         self.pushButton_parser.setText(_translate("MainWindow", "   Парсер"))
         self.pushButton_proxy.setText(_translate("MainWindow", "   Прокси"))
         self.pushButton_bomber.setText(_translate("MainWindow", "   Бомбер на аккаунт"))
+<<<<<<< HEAD
         self.pushButton_create_channel.setText(_translate("MainWindow", "   Массовое создание каналов"))
         self.pushButton_create_bot.setText(_translate("MainWindow", "   Массовое создание ботов"))
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         self.pushButton_enter_group.setText(_translate("MainWindow", "   Массовый заход в группу"))
         self.pushButton_reactions.setText(_translate("MainWindow", "   Накрутка реакций"))
         self.pushButton_comment.setText(_translate("MainWindow", "   Накрутка комментариев"))

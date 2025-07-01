@@ -126,7 +126,11 @@ class WindowConvert(WindowConvertUi):
                 tdesk = TDesktop(tdata_path)
                 client = await tdesk.ToTelethon(session=f"{self.root_project_dir}/working_files/convert_file/account.session",
                                                 flag=UseCurrentSession)
+<<<<<<< HEAD
                 await asyncio.wait_for(client.connect(), timeout=15)  # вход в аккаунт
+=======
+                await asyncio.wait_for(client.connect(), timeout=10)  # вход в аккаунт
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                 me = await client.get_me()
                 test_id = me.id
                 await client.disconnect()
@@ -202,7 +206,11 @@ class WindowConvert(WindowConvertUi):
             try:
                 client = TelegramClient(session_path)
                 tdesk = await client.ToTDesktop(flag=UseCurrentSession)
+<<<<<<< HEAD
                 await asyncio.wait_for(client.connect(), timeout=15)  # вход в аккаунт
+=======
+                await asyncio.wait_for(client.connect(), timeout=7)  # вход в аккаунт
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
                 me = await client.get_me()
                 test_id = me.id
                 await client.disconnect()

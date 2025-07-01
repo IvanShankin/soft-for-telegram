@@ -148,7 +148,11 @@ class AddAccounts(QThread): # затухание progress_bar
         try:
             tdesk = TDesktop(path_in_tdata)
             self.client = await tdesk.ToTelethon(session=f"{folder_path_account}/session.session", flag=UseCurrentSession)
+<<<<<<< HEAD
             await asyncio.wait_for( self.client.connect(),timeout=15) # вход в аккаунт
+=======
+            await asyncio.wait_for( self.client.connect(),timeout=5) # вход в аккаунт
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
             me = await self.client.get_me() # получение информации об аккаунте
 
             cursor.execute(f"SELECT id_tg FROM accounts WHERE id_tg = {me.id}")
@@ -229,8 +233,11 @@ class AddAccounts(QThread): # затухание progress_bar
             # если всё прошло успешно и аккаунт добавлен в программу
             self.task_done.emit([folder_path_account, me.id, me.username, me.first_name, me.phone], True, '0', False)
             return
+<<<<<<< HEAD
         except asyncio.exceptions.CancelledError:  # если экстренно остановили поток и в методе который вызывается с await может произойти такая ошибка
             return
+=======
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
         except (Exception, TFileNotFound):
             connection.close()
             # тут мы не смогли войти в аккаунт и значит необходимо скопировать папку tdata в папку с ошибкой входа
@@ -359,7 +366,11 @@ class DialogAddAccounts(DialogAddAccountsUi):
         quantity_folder_archive = len(folders_and_archives)  # кол-во папок и архивов указанных по пути пользователя
         if quantity_folder_archive != 0:
             self.one_step = 100 / quantity_folder_archive  # сколько необходимо прибавлять к прогрессбару за один аккаунт
+<<<<<<< HEAD
         else:  # если выбранного типа аккаунтов нет
+=======
+        else:  # если выбранного типа аккаунтов нету
+>>>>>>> d5cd4b4d78a37a2cf276f0ddebf12b9c08eeb563
             error_info = DialogInfo('Ошибка!', 'В выбранной папки нет\nнеобходимых данных!','notification.mp3')  # Создаем экземпляр
             error_info.exec_()  # Открываем
             self.close()
